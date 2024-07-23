@@ -1,4 +1,4 @@
-function HolaMundo() {
+function Home() {
   return (
     <div id="holamundo" className="text-center text-red-500">
       Hola Mundo
@@ -6,4 +6,4 @@ function HolaMundo() {
   );
 }
 
-export { HolaMundo };
+export { Home };

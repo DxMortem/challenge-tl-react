@@ -1,11 +1,11 @@
-import NavBar from '../../components/NavBar';
-import { HolaMundo } from '../Home';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { routes, fallbackElement } from './routes.jsx';
 
+const router = createBrowserRouter(routes);
 function App() {
   return (
     <>
-      <NavBar />
-      <HolaMundo />
+      <RouterProvider router={router} fallbackElement={fallbackElement} />
     </>
   );
 }
