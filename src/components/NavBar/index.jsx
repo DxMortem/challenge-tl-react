@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { routes } from './routes';
+import { ShoppingCartButton } from '../ShoppingCardButton';
 
 const NavBar = () => {
   const activeStyle = 'underline underline-offset-4 font-bold';
@@ -9,7 +10,7 @@ const NavBar = () => {
 
   return (
     <nav className="flex justify-between w-full fixed z-40 py-4 px-8">
-      <ul className="flex items-center gap-2">
+      <ul className="flex items-center gap-3">
         {routes.map((route) => (
           <li key={route.path}>
             <NavLink
@@ -23,13 +24,13 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <ul className="flex items-center gap-2">
+      <ul className="flex items-center gap-3">
         <button>Login</button>
         <button>Logout</button>
-        <button>Cart</button>
+        <ShoppingCartButton />
       </ul>
     </nav>
   );
 };
 
-export default NavBar;
+export { NavBar };
