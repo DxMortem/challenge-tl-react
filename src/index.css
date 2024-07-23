@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'AmpleSoftPro-Regular';
+  src:
+    local('AmpleSoftPro-Regular'),
+    url(fonts/AmpleSoftPro-Regular.woff) format('woff');
+}
