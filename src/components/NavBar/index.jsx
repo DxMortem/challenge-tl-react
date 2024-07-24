@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { leftMenu, rightMenu } from './routes';
-import { ShoppingCartButton } from '../ShoppingCardButton';
+import { ShoppingCartButton } from '../ShoppingCartButton';
 import { HomeButton } from '../HomeButton';
 
 const NavBar = () => {

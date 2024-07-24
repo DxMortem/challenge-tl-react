@@ -1,6 +1,6 @@
 const leftMenu = [
   { path: '/home', element: 'Home' },
-  { path: '/', element: 'Products' },
+  { path: '/products', element: 'Products' },
 ];
 
 const rightMenu = [
