@@ -8,7 +8,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['AmpleSoftPro-Regular', ...defaultTheme.fontFamily.sans],
+        sans: [
+          'AmpleSoftPro-Regular',
+          'AmpleSoftPro-Light',
+          'AmpleSoftPro-Medium',
+          'AmpleSoftPro-Bold',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
     },
   },

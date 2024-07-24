@@ -3,8 +3,26 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'AmpleSoftPro-Regular';
-  src:
-    local('AmpleSoftPro-Regular'),
-    url(fonts/AmpleSoftPro-Regular.woff) format('woff');
+  font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-Light.woff2) format('woff2');
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-Regular.woff2) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-Medium.woff2) format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-Bold.woff2) format('woff2');
+  font-weight: bolder;
+  font-style: normal;
 }
