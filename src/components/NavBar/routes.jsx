@@ -1,12 +1,13 @@
-const routes = [
-  {
-    path: 'home',
-    element: 'Home',
-  },
-  {
-    path: 'profile',
-    element: 'Profile',
-  },
+const leftMenu = [
+  { path: '/home', element: 'Home' },
+  { path: '/', element: 'Products' },
 ];
 
-export { routes };
+const rightMenu = [
+  { path: '/log-in', element: 'Log In' },
+  { path: '/my-orders', element: 'My Orders' },
+  { path: '/profile', element: 'Profile' },
+  { path: '/log-out', element: 'Log Out' },
+];
+
+export { leftMenu, rightMenu };

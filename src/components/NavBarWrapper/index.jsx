@@ -5,7 +5,7 @@ const NavBarWrapper = () => {
   return (
     <div>
       <NavBar />
-      <div id="body" className="relative py-8">
+      <div id="body" className="flex flex-col items-center mt-20">
         <Outlet />
       </div>
     </div>
