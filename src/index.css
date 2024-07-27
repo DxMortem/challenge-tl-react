@@ -4,8 +4,20 @@
 
 @font-face {
   font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-Thin.woff2) format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-ExtraLight.woff2) format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmpleSoftPro';
   src: url(fonts/AmpleSoftPro-Light.woff2) format('woff2');
-  font-weight: lighter;
+  font-weight: 300;
   font-style: normal;
 }
 @font-face {
@@ -22,7 +34,13 @@
 }
 @font-face {
   font-family: 'AmpleSoftPro';
+  src: url(fonts/AmpleSoftPro-Medium.woff2) format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmpleSoftPro';
   src: url(fonts/AmpleSoftPro-Bold.woff2) format('woff2');
-  font-weight: bolder;
+  font-weight: bold;
   font-style: normal;
 }
