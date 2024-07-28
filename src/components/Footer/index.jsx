@@ -4,11 +4,11 @@ import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa6';
 const Footer = () => {
   return (
     <div className="w-full">
-      <hr class="my-6 border-gray-200 mx-auto dark:border-gray-700" />
-      <div class="flex items-center justify-between flex-col">
-        <span class="text-sm text-gray-500 text-center dark:text-gray-400">
+      <hr className="my-6 border-gray-200 mx-auto dark:border-gray-700" />
+      <div className="flex items-center justify-between flex-col">
+        <span className="text-sm text-gray-500 text-center dark:text-gray-400">
           © 2024{' '}
-          <a href="https://github.com/DxMortem" class="hover:underline">
+          <a href="https://github.com/DxMortem" className="hover:underline">
             DxMortem™
           </a>
           . All Rights Reserved.
