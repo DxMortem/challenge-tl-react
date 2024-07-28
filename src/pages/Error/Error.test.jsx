@@ -1,10 +1,5 @@
-import {
-  createMemoryRouter,
-  MemoryRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import App from '../App';
 import { fallbackElement, routes } from '../App/routes';
 
 describe('Error Page', () => {
