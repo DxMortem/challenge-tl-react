@@ -1,15 +1,11 @@
 import { describe, expect, it, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from '.';
+import { BrowserRouter } from 'react-router-dom';
 
-test('demo', () => {
-  expect(true).toBe(true);
-});
-
-describe('render', () => {
-  it('renders the main page', () => {
+describe('App Page', () => {
+  test('Should Render be on Homepage', async () => {
     render(<App />);
-    expect(screen.queryByText('Hola Mundo')).toBeVisible();
-    expect(screen.queryByText('Hola Mundo')).toHaveClass('text-red-500');
+    expect(screen.getByText(/Welcome to my TL Challenge/i)).toBeInTheDocument();
   });
 });
