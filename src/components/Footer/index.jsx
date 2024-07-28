@@ -3,7 +3,7 @@ import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
-    <div className="fixed bottom-0 w-full">
+    <div className="w-full">
       <hr class="my-6 border-gray-200 mx-auto dark:border-gray-700" />
       <div class="flex items-center justify-between flex-col">
         <span class="text-sm text-gray-500 text-center dark:text-gray-400">
