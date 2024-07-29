@@ -4,6 +4,7 @@ import { ProductCardLoadingSkeleton } from '../../components/ProductCard/Loading
 import { useFetchWithPagination } from '../../hooks/useFetchWithPagination';
 import { Pagination } from 'flowbite-react';
 import { useQueryParams } from '../../hooks/useQueryParams';
+import { ProductDetail } from '../../components/ProductDetail';
 
 function Products() {
   const { setQueryParam, getQueryParamByKey } = useQueryParams();
@@ -47,7 +48,7 @@ function Products() {
             ))
           : items.map((item) => {
               if (!isPageLoading)
-                return <ProductCard key={item.name} item={item} />;
+                return <ProductCard key={item.name} product={item} />;
             })}
       </div>
       <div className="w-full flex justify-center mt-5">
