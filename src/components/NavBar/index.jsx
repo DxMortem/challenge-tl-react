@@ -2,8 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { leftMenu, rightMenu } from './routes';
 import { ShoppingCartButton } from '../ShoppingCartButton';
 import { HomeButton } from '../HomeButton';
+import { useContext } from 'react';
+import { AuthorizationContext } from '../../context/AuthorizationProvider';
 
 const NavBar = () => {
+  const { user } = useContext(AuthorizationContext);
+
   const activeStyle = 'underline underline-offset-4 font-bold';
 
   const onHoverStyle =
@@ -13,32 +17,36 @@ const NavBar = () => {
     <nav className="flex justify-between w-full fixed top-0 z-40 py-4 px-8">
       <ul className="flex items-center gap-3">
         <HomeButton />
-        {leftMenu.map((route) => (
-          <li key={route.path}>
-            <NavLink
-              to={route.path}
-              className={({ isActive }) =>
-                isActive ? activeStyle : onHoverStyle
-              }
-            >
-              {route.element}
-            </NavLink>
-          </li>
-        ))}
+        {leftMenu.map((route) =>
+          (route.private && user) || (!route.private && !user) ? (
+            <li key={route.path}>
+              <NavLink
+                to={route.path}
+                className={({ isActive }) =>
+                  isActive ? activeStyle : onHoverStyle
+                }
+              >
+                {route.element}
+              </NavLink>
+            </li>
+          ) : null
+        )}
       </ul>
       <ul className="flex items-center gap-3">
-        {rightMenu.map((route) => (
-          <li key={route.path}>
-            <NavLink
-              to={route.path}
-              className={({ isActive }) =>
-                isActive ? activeStyle : onHoverStyle
-              }
-            >
-              {route.element}
-            </NavLink>
-          </li>
-        ))}
+        {rightMenu.map((route) =>
+          (route.private && user) || (!route.private && !user) ? (
+            <li key={route.path}>
+              <NavLink
+                to={route.path}
+                className={({ isActive }) =>
+                  isActive ? activeStyle : onHoverStyle
+                }
+              >
+                {route.element}
+              </NavLink>
+            </li>
+          ) : null
+        )}
         <ShoppingCartButton />
       </ul>
     </nav>

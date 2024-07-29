@@ -5,9 +5,9 @@ const leftMenu = [
 
 const rightMenu = [
   { path: '/log-in', element: 'Log In' },
-  { path: '/my-orders', element: 'My Orders' },
-  { path: '/profile', element: 'Profile' },
-  { path: '/log-out', element: 'Log Out' },
+  { path: '/my-orders', element: 'My Orders', private: true },
+  { path: '/profile', element: 'Profile', private: true },
+  { path: '/log-out', element: 'Log Out', private: true },
 ];
 
 export { leftMenu, rightMenu };
