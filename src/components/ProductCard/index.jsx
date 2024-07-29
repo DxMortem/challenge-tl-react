@@ -9,7 +9,6 @@ const ProductCard = ({ product, onDelete }) => {
     useContext(ModalContext);
 
   const onProductClick = (e, product) => {
-    console.log(`newOpenModalValue: ${!openModal}, item: ${product.name}`);
     setModalChildren(
       <ProductDetail product={product} onClose={onCloseModal} />
     );

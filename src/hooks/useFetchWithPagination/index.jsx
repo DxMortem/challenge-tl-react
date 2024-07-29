@@ -45,7 +45,6 @@ const useFetchWithPagination = (
           .replace('page=', 'page=' + (pageNumber - 1).toString())
           .replace('pageSize=', 'pageSize=' + pageSize.toString())
       : url;
-    console.log(`url: ${url}`);
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
