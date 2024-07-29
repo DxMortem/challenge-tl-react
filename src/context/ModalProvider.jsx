@@ -6,15 +6,11 @@ const ModalContext = createContext();
 const ModalProvider = ({ children }) => {
   const [openModal, setOpenModal] = useState(false);
   const [modalChildren, setModalChildren] = useState(null);
-
-  const onClose = () => {
-    setOpenModal(false);
-    setModalChildren(null);
-  };
+  const [onClose, setOnClose] = useState({});
 
   return (
     <ModalContext.Provider
-      value={{ openModal, setOpenModal, setModalChildren }}
+      value={{ openModal, setOpenModal, setModalChildren, onClose, setOnClose }}
     >
       {children}
       <Modal isOpen={openModal} children={modalChildren} onClose={onClose} />

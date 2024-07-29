@@ -1,19 +1,10 @@
-import config from '../../../config/config.json';
+import { products as productsConfig } from '../../../config/config.json';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardLoadingSkeleton } from '../../components/ProductCard/LoadingSkeleton';
 import { useFetchWithPagination } from '../../hooks/useFetchWithPagination';
 import { Pagination } from 'flowbite-react';
-import { useQueryParams } from '../../hooks/useQueryParams';
 
 function Products() {
-  const { setQueryParam, getQueryParamByKey } = useQueryParams();
-  const initialPageSize =
-    getQueryParamByKey('pageSize') != ''
-      ? parseInt(getQueryParamByKey('pageSize'))
-      : 6;
-  const initialPageNumber =
-    getQueryParamByKey('page') != '' ? parseInt(getQueryParamByKey('page')) : 1;
-
   const {
     data: items,
     loading: isPageLoading,
@@ -22,20 +13,18 @@ function Products() {
     pageNumber,
     setPageNumber,
     pageSize,
+    getData,
+    onPageChange,
   } = useFetchWithPagination(
-    config.baseUrl + config.productsPath + '?page=' + '&pageSize=',
+    productsConfig.baseUrl +
+      productsConfig.path +
+      productsConfig.withPaginationQueryParams,
     true,
-    [],
-    initialPageNumber,
-    initialPageSize
+    []
   );
 
-  const onPageChange = (pageNumber) => {
-    if (pageNumber != initialPageNumber) {
-      setQueryParam('page', pageNumber);
-
-      setPageNumber(pageNumber);
-    }
+  const onDeleteHandle = () => {
+    getData();
   };
 
   return (
@@ -47,7 +36,13 @@ function Products() {
             ))
           : items.map((item) => {
               if (!isPageLoading)
-                return <ProductCard key={item.name} product={item} />;
+                return (
+                  <ProductCard
+                    key={item.name}
+                    product={item}
+                    onDelete={onDeleteHandle}
+                  />
+                );
             })}
       </div>
       <div className="w-full flex justify-center mt-5">

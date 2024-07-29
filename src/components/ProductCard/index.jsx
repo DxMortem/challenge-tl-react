@@ -4,14 +4,25 @@ import { useContext } from 'react';
 import { ModalContext } from '../../context/ModalProvider';
 import { ProductDetail } from '../ProductDetail';
 
-const ProductCard = ({ product }) => {
-  const { openModal, setOpenModal, setModalChildren } =
+const ProductCard = ({ product, onDelete }) => {
+  const { openModal, setOpenModal, setModalChildren, setOnClose } =
     useContext(ModalContext);
 
   const onProductClick = (e, product) => {
     console.log(`newOpenModalValue: ${!openModal}, item: ${product.name}`);
-    setModalChildren(<ProductDetail product={product} />);
+    setModalChildren(
+      <ProductDetail product={product} onClose={onCloseModal} />
+    );
     setOpenModal(true);
+    setOnClose(() => onCloseModal);
+  };
+
+  const onCloseModal = ({ needReload }) => {
+    setOpenModal(false);
+    setModalChildren(null);
+    if (needReload) {
+      onDelete();
+    }
   };
 
   return (

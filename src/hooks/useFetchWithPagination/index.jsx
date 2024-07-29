@@ -1,22 +1,44 @@
 import { useEffect, useState } from 'react';
+import { useQueryParams } from '../useQueryParams';
 
 const useFetchWithPagination = (
   url,
   urlNeedReeplace,
-  initialData,
-  initialPageNumber,
-  initialPageSize
+  initialRenderData,
+  initialRenderPageNumber,
+  initialRenderPageSize
 ) => {
-  const [data, setData] = useState(initialData);
+  const { setQueryParam, getQueryParamByKey } = useQueryParams();
+  const initialPageSize =
+    getQueryParamByKey('pageSize') != ''
+      ? parseInt(getQueryParamByKey('pageSize'))
+      : 6;
+  const initialPageNumber =
+    getQueryParamByKey('page') != '' ? parseInt(getQueryParamByKey('page')) : 1;
+  const needReload =
+    getQueryParamByKey('needReload') != ''
+      ? Boolean.valueOf(getQueryParamByKey('needReload'))
+      : false;
+
+  const [data, setData] = useState(initialRenderData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
-  const [pageNumber, setPageNumber] = useState(initialPageNumber);
-  const [pageSize, setPageSize] = useState(initialPageSize);
+  const [pageNumber, setPageNumber] = useState(
+    initialRenderPageNumber ? initialRenderPageNumber : initialPageNumber
+  );
+  const [pageSize, setPageSize] = useState(
+    initialRenderPageSize ? initialRenderPageSize : initialPageSize
+  );
 
-  useEffect(() => {
-    console.log(`pageNumber: ${pageNumber}`);
-    console.log(`pageSize: ${pageSize}`);
+  const onPageChange = (pageNumber) => {
+    if (pageNumber != initialPageNumber) {
+      setQueryParam('page', pageNumber);
+      setPageNumber(pageNumber);
+    }
+  };
+
+  const getData = () => {
     setLoading(true);
     url = urlNeedReeplace
       ? url
@@ -34,6 +56,10 @@ const useFetchWithPagination = (
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    getData();
     //cleanup function for develop in strict mode
     //Reference: https://react.dev/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development
     return () => {
@@ -53,6 +79,8 @@ const useFetchWithPagination = (
     pageNumber,
     setPageNumber,
     pageSize,
+    getData,
+    onPageChange,
   };
 };
 

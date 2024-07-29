@@ -1,4 +1,12 @@
 {
-  "baseUrl": "http://localhost:38080/",
-  "productsPath": "products"
+  "products": {
+    "baseUrl": "http://localhost:38080/",
+    "path": "products",
+    "withPaginationQueryParams": "?page=&pageSize=",
+    "withIdPath": "/{id}"
+  },
+  "users": {
+    "baseUrl": "http://localhost:38080/",
+    "path": "users"
+  }
 }

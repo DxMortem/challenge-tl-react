@@ -8,6 +8,8 @@ const Modal = ({ isOpen, children, onClose }) => {
     }
   };
 
+  console.log(isOpen);
+
   return isOpen
     ? createPortal(
         <div

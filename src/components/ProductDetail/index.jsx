@@ -2,8 +2,18 @@ import React from 'react';
 import { FaTrash } from 'react-icons/fa6';
 import { MdEditSquare } from 'react-icons/md';
 import { NumericFormat } from 'react-number-format';
+import { products as productsConfig } from '../../../config/config.json';
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, onClose }) => {
+  const deleteProduct = () => {
+    fetch(
+      productsConfig.baseUrl +
+        productsConfig.path +
+        productsConfig.withIdPath.replace('{id}', product.id),
+      { method: 'DELETE' }
+    ).then(onClose({ needReload: true }));
+  };
+
   return (
     <div id="product-detail" className="flex flex-col p-5 w-full h-full">
       <div className="w-full h-3/4">
@@ -24,7 +34,10 @@ const ProductDetail = ({ product }) => {
         ></NumericFormat>
       </div>
       <div className="sticky bottom-0 right-0 w-full text-right">
-        <button className="hover:text-red-600 mb-5 mr-2 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
+        <button
+          className="hover:text-red-600 mb-5 mr-2 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50"
+          onClick={deleteProduct}
+        >
           <div className="flex justify-center">
             <FaTrash />
           </div>
