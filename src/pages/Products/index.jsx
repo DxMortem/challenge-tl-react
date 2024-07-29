@@ -1,10 +1,9 @@
+import config from '../../../config/config.json';
 import { ProductCard } from '../../components/ProductCard';
-import config from '../../config/config.json';
 import { ProductCardLoadingSkeleton } from '../../components/ProductCard/LoadingSkeleton';
 import { useFetchWithPagination } from '../../hooks/useFetchWithPagination';
 import { Pagination } from 'flowbite-react';
 import { useQueryParams } from '../../hooks/useQueryParams';
-import { ProductDetail } from '../../components/ProductDetail';
 
 function Products() {
   const { setQueryParam, getQueryParamByKey } = useQueryParams();
