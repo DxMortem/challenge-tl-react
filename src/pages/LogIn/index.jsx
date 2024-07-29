@@ -4,7 +4,7 @@ import { AuthorizationContext } from '../../context/AuthorizationProvider';
 import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
-  const { user, setUser } = useContext(AuthorizationContext);
+  const { setUser, setIsAdmin } = useContext(AuthorizationContext);
   const [labelErrorText, setLabelErrorText] = useState('');
   const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ const LogIn = () => {
       .then((response) => response.json())
       .then((body) => {
         setUser(body);
+        setIsAdmin(body.username == 'Admin');
         navigate('/');
       })
       .catch((error) =>

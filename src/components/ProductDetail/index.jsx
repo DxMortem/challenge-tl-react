@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaTrash } from 'react-icons/fa6';
 import { MdEditSquare } from 'react-icons/md';
 import { NumericFormat } from 'react-number-format';
 import { products as productsConfig } from '../../../config/config.json';
+import { AuthorizationContext } from '../../context/AuthorizationProvider';
 
 const ProductDetail = ({ product, onClose }) => {
+  const { isAdmin } = useContext(AuthorizationContext);
+
   const deleteProduct = () => {
     fetch(
       productsConfig.baseUrl +
@@ -33,21 +36,25 @@ const ProductDetail = ({ product, onClose }) => {
           className="font-bold"
         ></NumericFormat>
       </div>
-      <div className="sticky bottom-0 right-0 w-full text-right">
-        <button
-          className="hover:text-red-600 mb-5 mr-2 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50"
-          onClick={deleteProduct}
-        >
-          <div className="flex justify-center">
-            <FaTrash />
-          </div>
-        </button>
-        <button className="hover:text-lime-600 mb-5 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
-          <div className="flex justify-center">
-            <MdEditSquare />
-          </div>
-        </button>
-      </div>
+      {isAdmin ? (
+        <div className="sticky bottom-0 right-0 w-full text-right">
+          <button
+            className="hover:text-red-600 mb-5 mr-2 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50"
+            onClick={deleteProduct}
+          >
+            <div className="flex justify-center">
+              <FaTrash />
+            </div>
+          </button>
+          <button className="hover:text-lime-600 mb-5 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
+            <div className="flex justify-center">
+              <MdEditSquare />
+            </div>
+          </button>
+        </div>
+      ) : (
+        <div className="p-5"></div>
+      )}
     </div>
   );
 };

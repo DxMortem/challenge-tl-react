@@ -3,11 +3,12 @@ import { AuthorizationContext } from '../../context/AuthorizationProvider';
 import { useNavigate } from 'react-router-dom';
 
 const LogOut = () => {
-  const { user, setUser } = useContext(AuthorizationContext);
+  const { setUser, setIsAdmin } = useContext(AuthorizationContext);
   const navigate = useNavigate();
 
   const handleYes = () => {
     setUser(null);
+    setIsAdmin(false);
     navigate('/');
   };
 
