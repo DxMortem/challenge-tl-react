@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaRegEdit } from 'react-icons/fa';
-import { FaRegCircleXmark, FaTrash } from 'react-icons/fa6';
+import { FaTrash } from 'react-icons/fa6';
+import { MdEditSquare } from 'react-icons/md';
 import { NumericFormat } from 'react-number-format';
 
 const ProductDetail = ({ product }) => {
@@ -31,7 +31,7 @@ const ProductDetail = ({ product }) => {
         </button>
         <button className="hover:text-lime-600 mb-5 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
           <div className="flex justify-center">
-            <FaRegEdit />
+            <MdEditSquare />
           </div>
         </button>
       </div>
