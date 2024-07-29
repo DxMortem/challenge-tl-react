@@ -18,7 +18,7 @@ const NavBar = () => {
       <ul className="flex items-center gap-3">
         <HomeButton />
         {leftMenu.map((route) =>
-          (route.private && user) || (!route.private && !user) ? (
+          (route.private && !user) || (route.publicOnly && user) ? null : (
             <li key={route.path}>
               <NavLink
                 to={route.path}
@@ -29,12 +29,12 @@ const NavBar = () => {
                 {route.element}
               </NavLink>
             </li>
-          ) : null
+          )
         )}
       </ul>
       <ul className="flex items-center gap-3">
         {rightMenu.map((route) =>
-          (route.private && user) || (!route.private && !user) ? (
+          (route.private && !user) || (route.publicOnly && user) ? null : (
             <li key={route.path}>
               <NavLink
                 to={route.path}
@@ -45,7 +45,7 @@ const NavBar = () => {
                 {route.element}
               </NavLink>
             </li>
-          ) : null
+          )
         )}
         <ShoppingCartButton />
       </ul>

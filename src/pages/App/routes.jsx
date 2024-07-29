@@ -5,9 +5,10 @@ import { Home } from '../Home';
 import { Profile } from '../Profile';
 import { Navigate } from 'react-router-dom';
 import { Products } from '../Products';
-import { ProductDetail } from '../../components/ProductDetail';
 import { ModalProvider } from '../../context/ModalProvider';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
+import { LogIn } from '../LogIn';
+import { LogOut } from '../LogOut';
 
 const routes = [
   {
@@ -44,14 +45,15 @@ const routes = [
     errorElement: <Error />,
   },
   { path: '/spinner', element: <FullPageSpinner /> },
-  { path: '/log-in', element: <FullPageSpinner /> },
+  { path: '/log-in', element: <LogIn />, errorElement: <Error /> },
   {
     path: '/log-out',
     element: (
       <ProtectedRoute>
-        <FullPageSpinner />
+        <LogOut />
       </ProtectedRoute>
     ),
+    errorElement: <Error />,
   },
 ];
 

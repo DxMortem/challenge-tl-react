@@ -1,13 +1,18 @@
 import { FaRegFaceSmileBeam } from 'react-icons/fa6';
 import Hello from '../../assets/hello.svg';
 import ReactImg from '../../assets/react.svg';
+import { useContext } from 'react';
+import { AuthorizationContext } from '../../context/AuthorizationProvider';
 
 function Home() {
+  const { user } = useContext(AuthorizationContext);
   return (
     <div id="home" className="flex flex-col items-center text-center">
       <img className="w-1/2 m-4" src={Hello} />
       <div>
-        <p className="text-4xl m-3">Hi!</p>
+        <p className="text-4xl m-3">
+          Hi{user ? ' ' + user.name + ' ' + user.lastname : null}!
+        </p>
         <p>Welcome to my TL Challenge!</p>
         <p>My name is Diego Borrero and I'll guide you by this store</p>
         <p>First of all you should know that this store is powered by react</p>
