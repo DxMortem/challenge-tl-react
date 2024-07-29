@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { products as productsConfig } from '../../../config/config.json';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardLoadingSkeleton } from '../../components/ProductCard/LoadingSkeleton';
 import { useFetchWithPagination } from '../../hooks/useFetchWithPagination';
 import { Pagination } from 'flowbite-react';
+import { FaPlus } from 'react-icons/fa6';
+import { AuthorizationContext } from '../../context/AuthorizationProvider';
 
 function Products() {
+  const { isAdmin } = useContext(AuthorizationContext);
   const {
     data: items,
     loading: isPageLoading,
@@ -28,20 +32,25 @@ function Products() {
   };
 
   return (
-    <div>
-      <div className="grid gap-4 grid-cols-3 w-full max-w-screen-lg">
+    <div className="flex flex-col w-full items-center">
+      <div
+        className={`grid gap-4 grid-cols-3 grid-rows auto-rows-fr max-w-screen-lg ${isPageLoading ? '' : 'items-center'}`}
+      >
         {isPageLoading
           ? [...Array(pageSize)].map((e, i) => (
-              <ProductCardLoadingSkeleton key={i} />
+              <div key={i} className="w-full flex flex-col items-center">
+                <ProductCardLoadingSkeleton />
+              </div>
             ))
           : items.map((item) => {
               if (!isPageLoading)
                 return (
-                  <ProductCard
+                  <div
                     key={item.name}
-                    product={item}
-                    onDelete={onDeleteHandle}
-                  />
+                    className="w-full h-full flex flex-col items-center"
+                  >
+                    <ProductCard product={item} onDelete={onDeleteHandle} />
+                  </div>
                 );
             })}
       </div>
@@ -52,6 +61,15 @@ function Products() {
           onPageChange={onPageChange}
         />
       </div>
+      {isAdmin ? (
+        <div className="sticky bottom-0 right-0 w-full text-right">
+          <button className="hover:text-lime-600 mb-10 mr-10 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
+            <div className="flex justify-center">
+              <FaPlus />
+            </div>
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -26,7 +26,7 @@ const ProductCard = ({ product, onDelete }) => {
 
   return (
     <article
-      className="cursor-pointer w-56 h-64 bg-slate-50 rounded-lg shadow-xl shadow-black/30"
+      className="cursor-pointer bg-slate-50 rounded-lg shadow-xl shadow-black/30 w-full h-full overflow-auto"
       onClick={(e) => onProductClick(e, product)}
     >
       <figure className="relative  w-full h-4/5">
