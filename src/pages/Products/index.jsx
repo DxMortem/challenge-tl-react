@@ -1,11 +1,15 @@
 import { useContext } from 'react';
-import { products as productsConfig } from '../../../config/config.json';
+import {
+  products as productsConfig,
+  queryPath,
+} from '../../../config/config.json';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardLoadingSkeleton } from '../../components/ProductCard/LoadingSkeleton';
 import { useFetchWithPagination } from '../../hooks/useFetchWithPagination';
 import { Pagination } from 'flowbite-react';
 import { FaPlus } from 'react-icons/fa6';
 import { AuthorizationContext } from '../../context/AuthorizationProvider';
+import { SearchBar } from '../../components/SearchBar';
 
 function Products() {
   const { isAdmin } = useContext(AuthorizationContext);
@@ -19,10 +23,12 @@ function Products() {
     pageSize,
     getData,
     onPageChange,
+    setFilterValues,
   } = useFetchWithPagination(
     productsConfig.baseUrl +
       productsConfig.path +
       productsConfig.withPaginationQueryParams,
+    [queryPath.withFilterName],
     true,
     []
   );
@@ -31,8 +37,20 @@ function Products() {
     getData();
   };
 
+  const onChangeSearchBar = (event) => {
+    setFilterValues({ productName: event.target.value });
+  };
+
+  const onClickSearchButton = () => {
+    getData();
+  };
+
   return (
     <div className="flex flex-col w-full items-center">
+      <SearchBar
+        onChangeInput={onChangeSearchBar}
+        onClickButton={onClickSearchButton}
+      />
       <div
         className={`grid gap-4 grid-cols-3 grid-rows auto-rows-fr max-w-screen-lg ${isPageLoading ? '' : 'items-center'}`}
       >

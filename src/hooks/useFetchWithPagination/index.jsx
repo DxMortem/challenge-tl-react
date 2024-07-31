@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useQueryParams } from '../useQueryParams';
+import { products } from '../../../config/config.json';
 
 const useFetchWithPagination = (
   url,
+  urlFilters,
   urlNeedReeplace,
   initialRenderData,
   initialRenderPageNumber,
@@ -15,10 +17,6 @@ const useFetchWithPagination = (
       : 6;
   const initialPageNumber =
     getQueryParamByKey('page') != '' ? parseInt(getQueryParamByKey('page')) : 1;
-  const needReload =
-    getQueryParamByKey('needReload') != ''
-      ? Boolean.valueOf(getQueryParamByKey('needReload'))
-      : false;
 
   const [data, setData] = useState(initialRenderData);
   const [loading, setLoading] = useState(true);
@@ -30,6 +28,22 @@ const useFetchWithPagination = (
   const [pageSize, setPageSize] = useState(
     initialRenderPageSize ? initialRenderPageSize : initialPageSize
   );
+  const [filterValues, setFilterValues] = useState({});
+
+  const getFilterName = (filter) => {
+    return filter.replace('&', '').replace('=', '');
+  };
+
+  const getFiltersWithValues = (urlFilters, filterValues) => {
+    return urlFilters
+      .map((filter) => {
+        let filterName = getFilterName(filter);
+        return filterValues.hasOwnProperty(filterName)
+          ? filter + filterValues[filterName]
+          : null;
+      })
+      .join('');
+  };
 
   const onPageChange = (pageNumber) => {
     if (pageNumber != initialPageNumber) {
@@ -40,12 +54,13 @@ const useFetchWithPagination = (
 
   const getData = () => {
     setLoading(true);
-    url = urlNeedReeplace
+    let urlToFetch = urlNeedReeplace
       ? url
           .replace('page=', 'page=' + (pageNumber - 1).toString())
           .replace('pageSize=', 'pageSize=' + pageSize.toString())
       : url;
-    fetch(url)
+    urlToFetch = urlToFetch + getFiltersWithValues(urlFilters, filterValues);
+    fetch(urlToFetch)
       .then((res) => res.json())
       .then((res) => {
         setData(res.content);
@@ -62,7 +77,7 @@ const useFetchWithPagination = (
     //cleanup function for develop in strict mode
     //Reference: https://react.dev/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development
     return () => {
-      url = urlNeedReeplace
+      let urlToFetch = urlNeedReeplace
         ? url
             .replace('page=' + (pageNumber - 1).toString(), 'page=')
             .replace('pageSize=' + pageSize.toString(), 'pageSize=')
@@ -80,6 +95,8 @@ const useFetchWithPagination = (
     pageSize,
     getData,
     onPageChange,
+    filterValues,
+    setFilterValues,
   };
 };
 

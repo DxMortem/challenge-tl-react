@@ -9,5 +9,8 @@
     "baseUrl": "http://localhost:38080/",
     "path": "users",
     "loginPath": "/login"
+  },
+  "queryPath": {
+    "withFilterName": "&productName="
   }
 }
