@@ -30,9 +30,6 @@ const ProductCard = ({ product, onDelete }) => {
       onClick={(e) => onProductClick(e, product)}
     >
       <figure className="relative  w-full h-4/5">
-        <button className="absolute top-0 right-0 m-2 p-1 flex justify-center items-center h-6 w-6 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
-          <MdAddShoppingCart />
-        </button>
         <img
           src={product.imageUrl}
           className="w-full h-full object-cover rounded-lg"
