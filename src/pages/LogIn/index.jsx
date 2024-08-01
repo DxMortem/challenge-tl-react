@@ -46,11 +46,8 @@ const LogIn = () => {
 
   return (
     <div className="bg-black fixed top-0 z-50 bg-opacity-50 w-full h-[calc(100%)]">
-      <form
-        className="max-w-sm mx-auto flex flex-col h-screen"
-        onSubmit={doLogin}
-      >
-        <div className="bg-white relative border-2 border-black rounded-lg shadow-2xl shadow-black/80 p-20 overflow-auto m-auto">
+      <form className="flex flex-col h-screen" onSubmit={doLogin}>
+        <div className="bg-white rounded-lg shadow-2xl shadow-black/80 p-20 overflow-auto m-auto">
           <div className="mb-5">
             <label
               htmlFor="email"
@@ -61,7 +58,7 @@ const LogIn = () => {
             <input
               type="text"
               id="email"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="name@payu.com"
               required
               onChange={cleanErrorLabel}
@@ -77,7 +74,7 @@ const LogIn = () => {
             <input
               type="password"
               id="password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
               onChange={cleanErrorLabel}
             />
@@ -87,7 +84,7 @@ const LogIn = () => {
           </label>
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
           </button>
