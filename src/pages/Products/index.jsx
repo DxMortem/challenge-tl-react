@@ -52,7 +52,7 @@ function Products() {
         onClickButton={onClickSearchButton}
       />
       <div
-        className={`grid gap-4 grid-cols-3 grid-rows auto-rows-fr max-w-screen-lg ${isPageLoading ? '' : 'items-center'}`}
+        className={`grid gap-4 grid-cols-[repeat(3,minmax(0,300px))] auto-rows-[minmax(0,400px)] max-w-screen-lg ${isPageLoading ? '' : 'items-center'}`}
       >
         {isPageLoading
           ? [...Array(pageSize)].map((e, i) => (
