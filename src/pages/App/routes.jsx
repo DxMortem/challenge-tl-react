@@ -2,7 +2,6 @@ import { NavBarWrapper } from '../../components/NavBarWrapper';
 import { FullPageSpinner } from '../../components/FullPageSpinner';
 import { Error } from '../Error';
 import { Home } from '../Home';
-import { Profile } from '../Profile';
 import { Navigate } from 'react-router-dom';
 import { Products } from '../Products';
 import { ModalProvider } from '../../context/ModalProvider';
