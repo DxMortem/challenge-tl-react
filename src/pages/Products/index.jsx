@@ -6,7 +6,7 @@ import {
 import { ProductCard } from '../../components/ProductCard';
 import { ProductCardLoadingSkeleton } from '../../components/ProductCard/LoadingSkeleton';
 import { useFetchWithPagination } from '../../hooks/useFetchWithPagination';
-import { Pagination } from 'flowbite-react';
+import { Pagination, Tooltip } from 'flowbite-react';
 import { FaPlus } from 'react-icons/fa6';
 import { AuthorizationContext } from '../../context/AuthorizationProvider';
 import { SearchBar } from '../../components/SearchBar';
@@ -81,11 +81,18 @@ function Products() {
       </div>
       {isAdmin ? (
         <div className="sticky bottom-0 right-0 w-full text-right">
-          <button className="hover:text-lime-600 mb-10 mr-10 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
-            <div className="flex justify-center">
-              <FaPlus />
-            </div>
-          </button>
+          <div className="flex justify-end mb-5 mr-5">
+            <Tooltip content="Create Product" trigger="hover">
+              <button
+                id="create-button"
+                className="hover:text-lime-600 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50"
+              >
+                <div className="flex justify-center">
+                  <FaPlus />
+                </div>
+              </button>
+            </Tooltip>
+          </div>
         </div>
       ) : null}
     </div>
