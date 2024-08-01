@@ -18,7 +18,7 @@ const SearchBar = ({ onChangeInput, onClickButton }) => {
         onKeyDown={handleKeyDown}
       ></input>
       <button
-        className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 shadow-sm shadow-black"
+        className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg text-sm px-5 py-2.5 text-center inline-flex items-center shadow-sm shadow-black"
         onClick={onClickButton}
       >
         <FaMagnifyingGlass />

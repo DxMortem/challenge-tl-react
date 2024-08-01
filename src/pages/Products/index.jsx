@@ -46,7 +46,7 @@ function Products() {
   };
 
   return (
-    <div className="flex flex-col w-full items-center">
+    <div className="flex flex-col w-full items-center ms-2 me-2">
       <SearchBar
         onChangeInput={onChangeSearchBar}
         onClickButton={onClickSearchButton}
