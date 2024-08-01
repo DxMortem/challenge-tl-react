@@ -19,8 +19,8 @@ const LogOut = () => {
   return (
     <div className="bg-black fixed top-0 z-50 bg-opacity-50 w-full h-[calc(100%)]">
       <div className="flex flex-col h-screen">
-        <div className="bg-white flex flex-col border-2 border-black rounded-lg shadow-2xl shadow-black/80 p-20 overflow-auto m-auto">
-          Are you sure you want to Log-Out?
+        <div className="bg-white flex flex-col rounded-lg shadow-2xl shadow-black/80 p-20 overflow-auto m-auto gap-5">
+          <div className="font-semibold">Are you sure you want to Log-Out?</div>
           <div className="flex justify-center">
             <button
               className="m-2 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
