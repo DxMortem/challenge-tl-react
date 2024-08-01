@@ -39,7 +39,7 @@ const ProductDetail = ({ product, onClose }) => {
       <div className="text-justify p-2">{product.description}</div>
 
       {isAdmin ? (
-        <div className="absolute bottom-0 right-0 w-full text-right">
+        <div className="sticky bottom-0 right-0 w-full text-right">
           <div className="flex justify-end mb-5 mr-5 gap-2">
             <Tooltip content="Delete product" trigger="hover">
               <button
