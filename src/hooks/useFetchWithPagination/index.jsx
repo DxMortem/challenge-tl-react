@@ -57,7 +57,7 @@ const useFetchWithPagination = (
     let urlToFetch = urlNeedReeplace
       ? url
           .replace('page=', 'page=' + (pageNumber - 1).toString())
-          .replace('pageSize=', 'pageSize=' + pageSize.toString())
+          .replace('size=', 'size=' + pageSize.toString())
       : url;
     urlToFetch = urlToFetch + getFiltersWithValues(urlFilters, filterValues);
     fetch(urlToFetch)
@@ -80,7 +80,7 @@ const useFetchWithPagination = (
       let urlToFetch = urlNeedReeplace
         ? url
             .replace('page=' + (pageNumber - 1).toString(), 'page=')
-            .replace('pageSize=' + pageSize.toString(), 'pageSize=')
+            .replace('size=' + pageSize.toString(), 'size=')
         : url;
     };
   }, [pageNumber]);
