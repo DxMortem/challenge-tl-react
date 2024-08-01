@@ -18,27 +18,11 @@ const routes = [
       { path: '/', element: <Navigate to="/home" replace={true} /> },
       { path: '/home', element: <Home /> },
       {
-        path: '/profile',
-        element: (
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        ),
-      },
-      {
         path: '/products',
         element: (
           <ModalProvider>
             <Products />
           </ModalProvider>
-        ),
-      },
-      {
-        path: '/my-orders',
-        element: (
-          <ProtectedRoute>
-            <FullPageSpinner />
-          </ProtectedRoute>
         ),
       },
     ],
