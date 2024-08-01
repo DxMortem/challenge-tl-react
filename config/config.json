@@ -2,7 +2,7 @@
   "products": {
     "baseUrl": "http://localhost:38080/",
     "path": "products",
-    "withPaginationQueryParams": "?page=&pageSize=",
+    "withPaginationQueryParams": "?page=&size=",
     "withIdPath": "/{id}"
   },
   "users": {

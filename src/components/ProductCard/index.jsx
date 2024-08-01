@@ -1,4 +1,3 @@
-import { MdAddShoppingCart } from 'react-icons/md';
 import { NumericFormat } from 'react-number-format';
 import { useContext } from 'react';
 import { ModalContext } from '../../context/ModalProvider';
