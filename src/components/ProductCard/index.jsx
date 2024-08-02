@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ModalContext } from '../../context/ModalProvider';
 import { ProductDetail } from '../ProductDetail';
 
-const ProductCard = ({ product, onDelete }) => {
+const ProductCard = ({ product, onNeedRechargeProducts }) => {
   const { openModal, setOpenModal, setModalChildren, setOnClose } =
     useContext(ModalContext);
 
@@ -19,7 +19,7 @@ const ProductCard = ({ product, onDelete }) => {
     setOpenModal(false);
     setModalChildren(null);
     if (needReload) {
-      onDelete();
+      onNeedRechargeProducts();
     }
   };
 

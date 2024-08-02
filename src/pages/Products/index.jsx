@@ -10,9 +10,13 @@ import { Pagination, Tooltip } from 'flowbite-react';
 import { FaPlus } from 'react-icons/fa6';
 import { AuthorizationContext } from '../../context/AuthorizationProvider';
 import { SearchBar } from '../../components/SearchBar';
+import { ModalContext } from '../../context/ModalProvider';
+import { ProductForm } from '../../components/ProductForm';
 
 function Products() {
   const { isAdmin } = useContext(AuthorizationContext);
+  const { openModal, setOpenModal, setModalChildren, setOnClose } =
+    useContext(ModalContext);
   const {
     data: items,
     loading: isPageLoading,
@@ -33,7 +37,7 @@ function Products() {
     []
   );
 
-  const onDeleteHandle = () => {
+  const onNeedRechargeProducts = () => {
     getData();
   };
 
@@ -43,6 +47,24 @@ function Products() {
 
   const onClickSearchButton = () => {
     getData();
+  };
+
+  const onClose = ({ needReload }) => {
+    setOpenModal(false);
+    setModalChildren(null);
+    if (needReload) {
+      onNeedRechargeProducts();
+    }
+  };
+
+  const handleOnClickCreateProduct = () => {
+    setModalChildren(
+      <div className="m-5">
+        <ProductForm type="create" onClose={onClose} />
+      </div>
+    );
+    setOpenModal(true);
+    setOnClose(() => onClose);
   };
 
   return (
@@ -67,7 +89,10 @@ function Products() {
                     key={item.name}
                     className="w-full h-full flex flex-col items-center"
                   >
-                    <ProductCard product={item} onDelete={onDeleteHandle} />
+                    <ProductCard
+                      product={item}
+                      onNeedRechargeProducts={onNeedRechargeProducts}
+                    />
                   </div>
                 );
             })}
@@ -86,6 +111,7 @@ function Products() {
               <button
                 id="create-button"
                 className="hover:text-lime-600 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50"
+                onClick={handleOnClickCreateProduct}
               >
                 <div className="flex justify-center">
                   <FaPlus />

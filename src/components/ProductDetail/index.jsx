@@ -5,9 +5,13 @@ import { NumericFormat } from 'react-number-format';
 import { products as productsConfig } from '../../../config/config.json';
 import { AuthorizationContext } from '../../context/AuthorizationProvider';
 import { Tooltip } from 'flowbite-react';
+import { ProductForm } from '../ProductForm';
+import { ModalContext } from '../../context/ModalProvider';
 
 const ProductDetail = ({ product, onClose }) => {
   const { isAdmin } = useContext(AuthorizationContext);
+  const { openModal, setOpenModal, setModalChildren, setOnClose } =
+    useContext(ModalContext);
 
   const deleteProduct = () => {
     fetch(
@@ -16,6 +20,16 @@ const ProductDetail = ({ product, onClose }) => {
         productsConfig.withIdPath.replace('{id}', product.id),
       { method: 'DELETE' }
     ).then(onClose({ needReload: true }));
+  };
+
+  const handleOnEdit = () => {
+    setModalChildren(
+      <div className="m-5">
+        <ProductForm type="edit" product={product} onClose={onClose} />
+      </div>
+    );
+    setOpenModal(true);
+    setOnClose(() => onClose);
   };
 
   return (
@@ -52,7 +66,10 @@ const ProductDetail = ({ product, onClose }) => {
               </button>
             </Tooltip>
             <Tooltip content="Edit product" trigger="hover">
-              <button className="hover:text-lime-600 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50">
+              <button
+                className="hover:text-lime-600 h-14 w-14 rounded-full bg-gray-50 text-black shadow-md shadow-black/50"
+                onClick={handleOnEdit}
+              >
                 <div className="flex justify-center">
                   <MdEditSquare />
                 </div>

@@ -8,6 +8,7 @@ import { ModalProvider } from '../../context/ModalProvider';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
 import { LogIn } from '../LogIn';
 import { LogOut } from '../LogOut';
+import { ProductForm } from '../../components/ProductForm';
 
 const routes = [
   {
@@ -37,6 +38,14 @@ const routes = [
       </ProtectedRoute>
     ),
     errorElement: <Error />,
+  },
+  {
+    path: '/form',
+    element: (
+      <ModalProvider>
+        <ProductForm />
+      </ModalProvider>
+    ),
   },
 ];
 
